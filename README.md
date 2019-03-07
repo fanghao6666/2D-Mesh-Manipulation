@@ -18,7 +18,9 @@
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/draw_contour.gif)
         * Middle_Mouse_Click --- Delaunay Triangulation
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/delauny.gif)
-        * Left_Mouse_Click --- Drag Control Points and Deform
+        * Left_Mouse_Click --- Drag Control Points to Deform and Remesh with Key 'R' or 'r'
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/mouse_drag.gif)
+        
+ ## More Function to be continue...
  
 
