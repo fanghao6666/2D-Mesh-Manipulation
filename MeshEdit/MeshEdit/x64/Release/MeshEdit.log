@@ -1,0 +1,12 @@
+﻿  Model.cpp
+Model.cpp(343): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+Model.cpp(344): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+Model.cpp(360): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+Model.cpp(417): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+Model.cpp(428): warning C4838: 从“float”转换到“int”需要收缩转换
+Model.cpp(428): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+  正在生成代码
+  All 2536 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  MeshEdit.vcxproj -> G:\CG\2D Mesh Manipulation\MeshEdit\x64\Release\MeshEdit.exe
+  MeshEdit.vcxproj -> G:\CG\2D Mesh Manipulation\MeshEdit\x64\Release\MeshEdit.pdb (Full PDB)
