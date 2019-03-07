@@ -21,6 +21,6 @@
         * Left_Mouse_Click --- Drag Control Points to Deform and Remesh with Key 'R' or 'r'
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/mouse_drag.gif)
         
- ## More Function to be continue...
+ ## More function to be continue ......
  
 
