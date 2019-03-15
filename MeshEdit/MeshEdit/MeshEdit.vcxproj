@@ -160,6 +160,7 @@
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Graphics.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Scene.h" />
   </ItemGroup>

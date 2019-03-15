@@ -7,6 +7,9 @@
 #include <Eigen/Core>
 #include <Eigen/Cholesky>
 
+#define POINT_DISTANCE 15.0f
+
+
 using namespace std;
 using namespace Eigen;
 
@@ -72,7 +75,8 @@ public:
 class Line
 {
 public:
-	Line() {};
+	Line() { is_dart_line = false; };
+	Line(bool _is_curve,bool _is_dart_line) :is_curve(_is_curve),is_dart_line(_is_dart_line) {};
 	~Line() {};
 
 	// 根据控制点计算内部点
@@ -96,6 +100,9 @@ public:
 
 	// 0表示直线，1表示曲线
 	bool is_curve;		
+	
+	// 是否是dart的线段
+	bool is_dart_line;
 
 };
 
@@ -112,6 +119,14 @@ public:
 		int v0;
 		int v1;
 		int v2;
+	};
+
+	struct Dart
+	{
+		int l0;
+		int l1;
+		int l2;
+		int l3;
 	};
 
 public:
@@ -148,17 +163,26 @@ public:
 	// 清除操作
 	void clear();
 
+	// 生成dart
+	void createDart(glm::vec2 dart_begin,glm::vec2 dart_end);
+
 
 
 public:
 	// 轮廓的所有线段
 	vector<Line>  lines;	
 
+	// 轮廓所有的dart,记录line的编号
+	vector<Dart> darts;
+
 	// 轮廓的所有控制点
 	vector<OPoint> control_points;
 
 	// 轮廓的所有轮廓点
 	vector<OPoint> contour_points;
+
+	// 德劳内三角化中所有的约束
+	vector<vector<OPoint>> segments;
 
 	// 所有的点包括内部点和外部点
 	vector<Point> vertices;

@@ -52,6 +52,12 @@ public:
 
 	// 当前是否是曲线控制点
 	static bool is_curve_control;
+
+	// 当前是否画dart
+	static bool is_draw_dart;
+	// dart的起始点
+	static glm::vec2 dart_begin;
+	static glm::vec2 dart_end;
 	
 
 };

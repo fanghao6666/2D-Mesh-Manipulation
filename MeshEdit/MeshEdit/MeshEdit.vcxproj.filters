@@ -32,5 +32,8 @@
     <ClInclude Include="Scene.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
