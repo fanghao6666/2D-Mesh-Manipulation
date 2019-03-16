@@ -20,6 +20,8 @@
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/delauny.gif)
         * Left_Mouse_Click --- Drag Control Points to Deform and Remesh with Key 'R' or 'r'
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/mouse_drag.gif)
+        * Left_Mouse_Drag  --- First press key 'D' or 'd' and drag a segment
+        ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/dart.gif)
         
  ## More function to be continue ......
  
