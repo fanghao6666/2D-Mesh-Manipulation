@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char* *argv)
 {
-	// 生成一个渲染场景
+	//生成一个渲染场景
 	Scene scene;
 	scene.Init(argc, argv);
 	scene.Render();

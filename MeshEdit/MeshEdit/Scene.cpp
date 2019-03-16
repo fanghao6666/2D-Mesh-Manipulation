@@ -8,16 +8,22 @@
 #include <windows.h>
 
 #include "Scene.h"
+#include "Graphics.h"
 
 using namespace std;
 
 Contour Scene::contour;
 int Scene::select_point_index = -1;
 int Scene::select_line_index = -1;
+int Scene::select_dart_index = -1;
 glm::vec2 Scene::click_point;
 glm::vec2 Scene::click_line_s;
 glm::vec2 Scene::click_line_m;
 glm::vec2 Scene::click_line_e;
+glm::vec2 Scene::click_dart_1;
+glm::vec2 Scene::click_dart_2;
+glm::vec2 Scene::click_dart_3;
+glm::vec2 Scene::click_dart_4;
 vector<pair<glm::vec2, bool>> Scene::draw_contour_points;
 bool Scene::is_curve_control = false;
 bool Scene::is_draw_dart = false;
@@ -212,6 +218,30 @@ void Scene::OnMouseClick(int button,int state, int x, int y)
 					 click_line_e = contour.lines[i].end_points.second.position;
 				 }
 			 }
+			 // 判断是否选到dart
+			 for (int i = 0; i < contour.darts.size(); ++i)
+			 {
+				 vector<glm::vec2> dart_contour;
+				 dart_contour.push_back(contour.lines[contour.darts[i].l0].end_points.first.position);
+				 dart_contour.push_back(contour.lines[contour.darts[i].l1].end_points.first.position);
+				 dart_contour.push_back(contour.lines[contour.darts[i].l2].end_points.first.position);
+				 dart_contour.push_back(contour.lines[contour.darts[i].l3].end_points.first.position);
+
+				//glm::vec2 mean_position = (contour.lines[contour.darts[i].l0].end_points.first.position 
+				//						+ contour.lines[contour.darts[i].l1].end_points.first.position 
+				//						+ contour.lines[contour.darts[i].l2].end_points.first.position
+				//						+ contour.lines[contour.darts[i].l3].end_points.first.position) * (1.0f/4.0f);
+				 if(isPointInPolygon2D(click_point,dart_contour))
+				//if(glm::distance(click_point, mean_position) < 5)
+				 {
+					 select_dart_index = i;
+					 click_dart_1 = contour.lines[contour.darts[i].l0].end_points.first.position;
+					 click_dart_2 = contour.lines[contour.darts[i].l1].end_points.first.position;
+					 click_dart_3 = contour.lines[contour.darts[i].l2].end_points.first.position;
+					 click_dart_4 = contour.lines[contour.darts[i].l3].end_points.first.position;
+					 cout << "select the " << i << "  dart" << endl;
+				 }
+			 }
 		 }
 	 }
 	// 鼠标左键松开
@@ -220,9 +250,12 @@ void Scene::OnMouseClick(int button,int state, int x, int y)
 		if (is_draw_dart)
 		{
 			contour.createDart(dart_begin, dart_end);
+			dart_begin = glm::vec2(0);
+			dart_end = glm::vec2(0);
 		}
 		select_point_index = -1;
 		select_line_index = -1;
+		select_dart_index = -1;
 	}
 
 	// 鼠标中键按下
@@ -318,8 +351,10 @@ void Scene::OnMouseMove(int x, int y)
 			OPoint first_point = contour.lines[select_line_index].end_points.first;
 			OPoint middle_point = contour.lines[select_line_index].curve_control_point;
 			OPoint second_point = contour.lines[select_line_index].end_points.second;
+
 			// 第一个点变形
 			contour.Deform(contour.getControlPointIndex(first_point), click_line_s + (new_position - click_point));
+
 			// 曲线的中间控制点变形
 			if (contour.lines[select_line_index].is_curve == true)
 			{
@@ -327,6 +362,20 @@ void Scene::OnMouseMove(int x, int y)
 			}
 			// 第二个点变形
 			contour.Deform(contour.getControlPointIndex(second_point), click_line_e + (new_position - click_point));
+		}
+		// 选中的dart变形
+		if (select_dart_index != -1)
+		{
+			Contour::Dart select_dart = contour.darts[select_dart_index];
+			OPoint dart_1 = contour.lines[select_dart.l0].end_points.first;
+			OPoint dart_2 = contour.lines[select_dart.l1].end_points.first;
+			OPoint dart_3 = contour.lines[select_dart.l2].end_points.first;
+			OPoint dart_4 = contour.lines[select_dart.l3].end_points.first;
+
+			contour.Deform(contour.getControlPointIndex(dart_1), click_dart_1 + (new_position - click_point));
+			contour.Deform(contour.getControlPointIndex(dart_2), click_dart_2 + (new_position - click_point));
+			contour.Deform(contour.getControlPointIndex(dart_3), click_dart_3 + (new_position - click_point));
+			contour.Deform(contour.getControlPointIndex(dart_4), click_dart_4 + (new_position - click_point));
 		}
 	}
 

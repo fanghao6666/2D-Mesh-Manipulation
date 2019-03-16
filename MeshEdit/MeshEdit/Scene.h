@@ -40,12 +40,18 @@ public:
 	// 选择的点和线索引
 	static int select_point_index;
 	static int select_line_index;
+	static int select_dart_index;
 
 	// 选择的点和线的坐标
 	static glm::vec2 click_point;
 	static glm::vec2 click_line_s;
 	static glm::vec2 click_line_m;
 	static glm::vec2 click_line_e;
+	static glm::vec2 click_dart_1;
+	static glm::vec2 click_dart_2;
+	static glm::vec2 click_dart_3;
+	static glm::vec2 click_dart_4;
+
 
 	// 保存鼠标画的轮廓控制点
 	static vector<pair<glm::vec2,bool>> draw_contour_points;

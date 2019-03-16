@@ -506,13 +506,13 @@ void Contour::createDart(glm::vec2 dart_begin, glm::vec2 dart_end)
 	if (is_seg_in)
 	{
 		// 新加入的边
-		Line add_line_1(false,true);
+		Line add_line_1(false, true);
 		Line add_line_2(false, true);
 		Line add_line_3(false, true);
 		Line add_line_4(false, true);
 
 		// 边缘切口张开的角度 弧度值
-		float angle = 3.1415 / 6;		// 30度
+		float angle = 3.1415 / 4;		// 30度
 		
 		glm::vec2 add_point_1 = 0.5f * (dart_begin + dart_end) + 0.5f * glm::distance(dart_begin, dart_end) * tan(angle / 2) * getVerticalUnitVec(dart_end - dart_begin, 1);
 		glm::vec2 add_point_2 = 0.5f * (dart_begin + dart_end) + 0.5f * glm::distance(dart_begin, dart_end) * tan(angle / 2) * getVerticalUnitVec(dart_end - dart_begin, 0);
@@ -541,7 +541,7 @@ void Contour::createDart(glm::vec2 dart_begin, glm::vec2 dart_end)
 		new_lines.push_back(add_line_3);
 		new_lines.push_back(add_line_4);
 
-		Dart dart = { new_lines.size() - 1,new_lines.size() - 2,new_lines.size() - 3,new_lines.size() - 4 };
+		Dart dart = { new_lines.size() - 4,new_lines.size() - 3,new_lines.size() - 2,new_lines.size() - 1};
 		darts.push_back(dart);
 
 	}
