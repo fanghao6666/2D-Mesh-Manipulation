@@ -22,6 +22,9 @@
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/mouse_drag.gif)
         * Left_Mouse_Drag  --- First press key 'D' or 'd' and drag a segment
         ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/dart.gif)
+        * Adaptive Remesh
+        ![](https://github.com/fanghao6666/2D-Mesh-Manipulation/raw/master/picture/remesh.gif)
+        
         
  ## More function to be continue ......
  
