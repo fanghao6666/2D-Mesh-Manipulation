@@ -313,6 +313,7 @@ void Contour::MVCDeform()
 	{
 		vertices[i].position = glm::vec2(new_vertices_matrix(i, 0), new_vertices_matrix(i, 1));
 	}
+
 }
 
 // 轮廓线变形
@@ -337,6 +338,10 @@ void Contour::Deform(int handle_index, glm::vec2 new_pos)
 	}
 	getOPints();
 	MVCDeform();
+	if (evaluateMesh())
+	{
+		reMesh();
+	}
 }
 
 // 根据轮廓线进行德劳内三角化
@@ -354,13 +359,6 @@ void Contour::delaunayTrianglation()
 	
 	// 轮廓范围限制
 	vector<Segment2> vSegments;
-	//for (int i = 0; i < vPoints.size(); ++i)
-	//{
-	//	Point2& p0(vPoints[i]);
-	//	Point2& p1(vPoints[(i + 1) % vPoints.size()]);
-	//	vSegments.push_back(Segment2(p0, p1));
-	//}
-
 	for (int i = 0; i < segments.size(); ++i)
 	{
 		for (int j = 0; j < segments[i].size(); ++j)
@@ -411,6 +409,42 @@ void Contour::delaunayTrianglation()
 	readOBJ("../Mesh/mesh.obj");
 }
 
+// 网格质量评价,true表示需要重新三角化，false表示不需要重新三角化
+// 评价指标：单元边长比，单元内角和，单元扭曲角度等
+bool Contour::evaluateMesh()
+{
+	for (int i = 0; i < triangles.size(); ++i)
+	{
+		glm::vec2 v01 = vertices[triangles[i].v1].position - vertices[triangles[i].v0].position;
+		glm::vec2 v02 = vertices[triangles[i].v2].position - vertices[triangles[i].v0].position;
+		glm::vec2 v12 = vertices[triangles[i].v2].position - vertices[triangles[i].v1].position;
+
+
+		// 单元边长比约束
+		float max_length = max(glm::length(v01), max(glm::length(v02), glm::length(v12)));
+		float min_length = min(glm::length(v01), min(glm::length(v02), glm::length(v12)));
+		float side_ratio = max_length / min_length;
+		if (side_ratio > 3.0f)
+		{
+			return true;
+		}
+
+		//// 角度约束(此约束不是很好暂时不用)
+		//float max_angle = max(Cos2d(v01, v02), max(Cos2d(-v01, v12), Cos2d(-v12, -v02)));
+		//float min_angle = min(Cos2d(v01, v02), min(Cos2d(-v01, v12), Cos2d(-v12, -v02)));
+
+		//if (min_angle < -0.5f || max_angle > 0.866f)
+		//{
+		//	cout << "angle Error   " << min_angle << " " << max_angle << endl;
+		//}
+	}
+
+	return false;
+}
+
+
+
+//网格的重新三角化
 void Contour::reMesh()
 {
 	Init();

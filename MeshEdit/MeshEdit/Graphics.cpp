@@ -163,6 +163,11 @@ double Cos(glm::vec3 vec_1, glm::vec3 vec_2)
 	return (glm::dot(glm::normalize(vec_1), glm::normalize(vec_2)));
 }
 
+double Cos2d(glm::vec2 vec_1, glm::vec2 vec_2)
+{
+	return (glm::dot(glm::normalize(vec_1), glm::normalize(vec_2)));
+}
+
 
 /* \brief Calculate sin¦Á
 *
@@ -176,6 +181,11 @@ double Cos(glm::vec3 vec_1, glm::vec3 vec_2)
 double Sin(glm::vec3 vec_1, glm::vec3 vec_2)
 {
 	return (sqrt(1.0f - pow(Cos(vec_1, vec_2), 2)));
+}
+
+double Sin2d(glm::vec2 vec_1, glm::vec2 vec_2)
+{
+	return (sqrt(1.0f - pow(Cos2d(vec_1, vec_2), 2)));
 }
 
 /* \brief Calculate tan¦Á
@@ -192,6 +202,16 @@ double Tan(glm::vec3 vec_1, glm::vec3 vec_2)
 {
 	double cos = Cos(vec_1, vec_2);
 	double sin = Sin(vec_1, vec_2);
+
+	assert(cos != 0);
+
+	return (sin / cos);
+}
+
+double Tan2d(glm::vec2 vec_1, glm::vec2 vec_2)
+{
+	double cos = Cos2d(vec_1, vec_2);
+	double sin = Sin2d(vec_1, vec_2);
 
 	assert(cos != 0);
 

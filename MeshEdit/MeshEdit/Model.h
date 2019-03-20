@@ -167,6 +167,9 @@ public:
 	// 生成dart
 	void createDart(glm::vec2 dart_begin,glm::vec2 dart_end);
 
+	//评估网格质量 true表示需要重新三角化 false表示不需要重新三角化
+	bool evaluateMesh();
+
 
 
 public:

@@ -20,10 +20,16 @@ using namespace std;
 using namespace GEOM_FADE25D;
 
 /********************** Declare All Functions Here ***********************/
+void Out(glm::vec2 vec_2);
+void Out(glm::vec3 vec_3);
+void Out(glm::vec4 vec_4);
 
 double Cos(glm::vec3 vec_1, glm::vec3 vec_2);
+double Cos2d(glm::vec2 vec_1, glm::vec2 vec_2);
 double Sin(glm::vec3 vec_1, glm::vec3 vec_2);
+double Sin2d(glm::vec2 vec_1, glm::vec2 vec_2);
 double Tan(glm::vec3 vec_1, glm::vec3 vec_2);
+double Tan2d(glm::vec2 vec_1, glm::vec2 vec_2);
 
 glm::vec2 getVerticalUnitVec(glm::vec2 vec, bool is_left);
 

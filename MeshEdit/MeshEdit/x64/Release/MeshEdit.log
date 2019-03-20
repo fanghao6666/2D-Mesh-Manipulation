@@ -1,10 +1,26 @@
-﻿  Scene.cpp
-Scene.cpp(280): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-Scene.cpp(322): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+﻿  Model.cpp
+Model.cpp(381): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+Model.cpp(382): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+Model.cpp(398): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+Model.cpp(491): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+Model.cpp(502): warning C4838: 从“float”转换到“int”需要收缩转换
+Model.cpp(502): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(549): warning C4305: “初始化”: 从“double”到“float”截断
+Model.cpp(567): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(568): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(569): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(570): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(578): warning C4838: 从“unsigned __int64”转换到“int”需要收缩转换
+Model.cpp(578): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+Model.cpp(613): warning C4305: “初始化”: 从“double”到“float”截断
+Model.cpp(630): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(631): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(632): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+Model.cpp(633): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
   正在生成代码
-  71 of 2849 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
+  73 of 2852 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
+    24 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   MeshEdit.vcxproj -> G:\CG\2D Mesh Manipulation\MeshEdit\x64\Release\MeshEdit.exe
   MeshEdit.vcxproj -> G:\CG\2D Mesh Manipulation\MeshEdit\x64\Release\MeshEdit.pdb (Full PDB)
